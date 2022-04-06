@@ -16,11 +16,28 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     image: snearteam/appsneardev:v0.0.1
+    depends_on:
+     - db
+     - cache
     restart: always
     volumes:
       - appsneardev_vol:/app
     ports:
       - "3000:3000"
+    environment:
+      NODE_ENV: dev
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: pgsnearpwd
+      DB_PASSWORD: postgres
+      DB_NAME: dbsnear
+      REDIS_HOST: cache
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: snearredispassword
+    links:
+      - db
+      - cache          
+
     networks:
       netsnear:
 
@@ -40,6 +57,18 @@ services:
     networks:
       netsnear:
 
+  cache:
+    image: redis:7.0-rc-alpine3.15
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 60 1 --loglevel warning --requirepass snearredispassword
+    volumes: 
+      - redissnear_cache:/data
+    networks:
+      netsnear:
+      
 volumes:
   appsneardev_vol:
   pgsnear_data:
+  redissnear_cache:
