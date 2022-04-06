@@ -1,0 +1,23 @@
+{
+  "name": "snear-backend",
+  "version": "0.0.1",
+  "description": "Backend Projeto Snear - IFC",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "\"echo \\\"Error: no test specified\\\" && exit 1\""
+  },
+  "author": "SNEAR Team",
+  "license": "GPL-2.0",
+  "dependencies": {
+    "express": "^4.17.3",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.17.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.11.0",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2"
+  }
+}

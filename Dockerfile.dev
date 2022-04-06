@@ -1,0 +1,19 @@
+FROM node:17.8.0
+
+USER root  
+RUN mkdir -p /app
+RUN useradd -s /bin/bash snearuser -d /app
+WORKDIR /app
+COPY package*.json ./
+RUN npm install -g nodemon
+RUN npm install
+
+COPY . .
+
+RUN chown -R snearuser:snearuser /app
+
+USER snearuser
+
+EXPOSE 3000
+
+CMD [ "nodemon", "src/server.js" ]

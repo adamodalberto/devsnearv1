@@ -1,0 +1,45 @@
+version: '3.2'
+
+networks:
+  netsnear:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+       - subnet: 10.172.31.0/24
+
+services:
+  app:
+    hostname: appsneardev
+    container_name: appsneardev
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: snearteam/appsneardev:v0.0.1
+    restart: always
+    volumes:
+      - appsneardev_vol:/app
+    ports:
+      - "3000:3000"
+    networks:
+      netsnear:
+
+  db:
+    hostname: dbsnear
+    container_name: pgsneardb
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=pgsnearuser
+      - POSTGRES_PASSWORD=pgsnearpwd
+      - POSTGRES_DB=dbsnear
+    ports:
+      - '5432:5432'
+    volumes: 
+      - pgsnear_data:/var/lib/postgresql/data
+    networks:
+      netsnear:
+
+volumes:
+  appsneardev_vol:
+  pgsnear_data:
