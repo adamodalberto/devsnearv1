@@ -1,1 +1,1 @@
-# snearteste
+# Ambiente modelo para desenvolvimento Projeto SNEAR - by Snear Team
