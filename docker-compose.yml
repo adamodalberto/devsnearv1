@@ -28,8 +28,8 @@ services:
       NODE_ENV: dev
       DB_HOST: db
       DB_PORT: 5432
-      DB_USER: pgsnearpwd
-      DB_PASSWORD: postgres
+      DB_USER: pgsnearuser
+      DB_PASSWORD: pgsnearpwd
       DB_NAME: dbsnear
       REDIS_HOST: cache
       REDIS_PORT: 6379
@@ -37,7 +37,6 @@ services:
     links:
       - db
       - cache          
-
     networks:
       netsnear:
 
