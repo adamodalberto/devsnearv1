@@ -1,0 +1,18 @@
+{
+    "type": "postgres",
+    "host": "pgsneardb",
+    "port": 5432,
+    "username": "pgsnearuser",
+    "password": "pgsnearpwd",
+    "database": "dbsnear",
+    "synchronize": false,
+    "entities": [
+      "src/app/models/*.ts"
+    ],
+    "migrations": [
+      "src/database/migrations/*.ts"
+    ],
+    "cli": {
+      "migrationsDir": "src/database/migrations"
+    }
+  }
