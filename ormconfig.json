@@ -7,7 +7,7 @@
     "database": "dbsnear",
     "synchronize": false,
     "entities": [
-      "src/app/models/*.ts"
+      "src/models/*.ts"
     ],
     "migrations": [
       "src/database/migrations/*.ts"
