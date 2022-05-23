@@ -1,8 +1,17 @@
 FROM node:17.8.0
 
 USER root  
+RUN apt update && apt install -y --no-install-recommends \
+                    default-jre \
+                    git \
+                    zsh \
+                    curl \
+                    wget \
+                    fonts-powerline
+
 RUN mkdir -p /app
 RUN useradd -s /bin/bash snearuser -d /app
+
 WORKDIR /app
 COPY package*.json ./
 RUN npm install -g nodemon
